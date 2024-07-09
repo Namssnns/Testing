@@ -1,12 +1,18 @@
+local InputService = game:GetService("UserInputService")
+local TS = game:GetService("TweenService")
+local Opened = true
+local CallBack = nil
+
 
 local ScreenGui = Instance.new("ScreenGui",game.Players.LocalPlayer.PlayerGui)
 ScreenGui.Name = "Shovel Masters Hack Client"
 
 local Main = Instance.new("Frame",ScreenGui)
-Main.Position = UDim2.new(0.365,0,0.135,0)
 Main.Size = UDim2.new(0, 385,0, 419)
+Main.Position = UDim2.new(0.5,0,0.5,0)
 Main.BackgroundColor3 = Color3.new(0.454902, 0.454902, 0.454902)
 Main.Name = "Main"
+Main.AnchorPoint = Vector2.new(0.5,0.5)
 
 local UiCornerTemp = Instance.new("UICorner",Main)
 UiCornerTemp.CornerRadius = UDim.new(0,32)
@@ -40,7 +46,7 @@ UiCornerTemp:Clone().Parent = GiveWinsTextBox
 
 local GivePowerFrame = Instance.new("Frame",Main)
 GivePowerFrame.BackgroundTransparency = 1
-GivePowerFrame.Position = UDim2.new(0.039, 0,0.348, 0)
+GivePowerFrame.Position = UDim2.new(0.068, 0,0.348, 0)
 GivePowerFrame.Size = UDim2.new(0,299,0,57)
 GivePowerFrame.Name = "GivePowerFrame"
 
@@ -61,7 +67,7 @@ GivePowerTextBox.Position = UDim2.new(0.492,0,0,0)
 GivePowerTextBox.Size = UDim2.new(0,200,0,50)
 UiCornerTemp:Clone().Parent = GivePowerTextBox
 
-
+local Size = Main.Size
 
 
 
@@ -94,6 +100,40 @@ GivePowerButton.MouseButton1Click:Connect(function()
 
 
 	end
+end)
+
+InputService.InputBegan:Connect(function(object,processed)
+	if InputService:GetFocusedTextBox() then return end
+	if (object.KeyCode == Enum.KeyCode.Z) then
+		print(CallBack)
+		if Opened then
+			
+				
+				Opened = false
+			Main:TweenSize(UDim2.new(0,0,0,0),Enum.EasingDirection.In,Enum.EasingStyle.Sine,1,true)
+			for i,v in pairs(Main:GetDescendants()) do
+				if v:IsA("Frame") or v:IsA("TextBox") or v:IsA("TextButton") then
+					v.Visible = false
+				end
+				
+				
+			end
+		else
+			Main:TweenSize(Size,Enum.EasingDirection.Out,Enum.EasingStyle.Sine,1,true)
+			for i,v in pairs(Main:GetDescendants()) do
+				if v:IsA("Frame") or v:IsA("TextBox") or v:IsA("TextButton") then
+					v.Visible = true
+				end
+				end
+			Opened = true
+			end
+	
+			
+		
+		
+	end
+	
+
 end)
 
 
