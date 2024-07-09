@@ -80,9 +80,6 @@ GiveWinsButton.MouseButton1Click:Connect(function()
 		}
 
 		game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("changeWins"):FireServer(unpack(args))
-
-
-
 	end
 end)
 
@@ -97,8 +94,6 @@ GivePowerButton.MouseButton1Click:Connect(function()
 		}
 
 		game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("changePower"):FireServer(unpack(args))
-
-
 	end
 end)
 
@@ -107,34 +102,34 @@ InputService.InputBegan:Connect(function(object,processed)
 	if (object.KeyCode == Enum.KeyCode.Z) then
 		print(CallBack)
 		if Opened then
-			
-				
-				Opened = false
+			Opened = false
 			Main:TweenSize(UDim2.new(0,0,0,0),Enum.EasingDirection.In,Enum.EasingStyle.Sine,1,true)
 			for i,v in pairs(Main:GetDescendants()) do
 				if v:IsA("Frame") or v:IsA("TextBox") or v:IsA("TextButton") then
 					v.Visible = false
 				end
-				
-				
 			end
 		else
 			Main:TweenSize(Size,Enum.EasingDirection.Out,Enum.EasingStyle.Sine,1,true)
+
+			Opened = true
+			wait(1)
 			for i,v in pairs(Main:GetDescendants()) do
 				if v:IsA("Frame") or v:IsA("TextBox") or v:IsA("TextButton") then
 					v.Visible = true
 				end
-				end
-			Opened = true
 			end
-	
-			
-		
-		
+		end
 	end
-	
-
 end)
+
+
+
+
+
+
+
+
 
 
 
