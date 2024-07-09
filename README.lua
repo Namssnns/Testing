@@ -40,7 +40,7 @@ UiCornerTemp:Clone().Parent = GiveWinsTextBox
 
 local GivePowerFrame = Instance.new("Frame",Main)
 GivePowerFrame.BackgroundTransparency = 1
-GivePowerFrame.Position = UDim2.new(0.068, 0,0.348, 0)
+GivePowerFrame.Position = UDim2.new(0.039, 0,0.348, 0)
 GivePowerFrame.Size = UDim2.new(0,299,0,57)
 GivePowerFrame.Name = "GivePowerFrame"
 
